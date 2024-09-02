@@ -1,0 +1,72 @@
+* {
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+  }
+  
+  header , main {
+    width: 60%;
+    margin-left: 20%;
+  
+    display: flex;
+  }
+  
+  header {
+    height: 80px;
+    background-color: lightcyan;
+    color: black;
+  
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+  }
+  
+  header img {
+    width: 40px;
+    height: 40px;
+  }
+
+main {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    height: 480px;
+    border: 1px dotted darkgrey;
+}
+
+section {
+  margin: 5px;
+}
+
+section > div {
+  margin: 10px;
+  border-radius: 5px;
+}
+
+/* 버튼 css */
+/* button style */
+.button {
+  background: #fac100;
+  border: none;
+  width: 100px;
+  height: 50px;
+  font-size: 15px;
+  font-weight: 600;
+  color: #171205;
+  border-radius: 5px;
+  cursor: pointer;
+ }
+ 
+ /* light on hover with a simple box-shadow */
+ .button:hover {
+   background: #f7d874;
+   color: #fac100;
+   box-shadow: 0 0 10px #fac100,
+               0 0 25px #fac100,
+               0 0 50px #fac100,
+               0 0 100px #fac100;
+   
+ }
+
+ 
