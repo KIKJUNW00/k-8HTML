@@ -7,3 +7,23 @@ section >div> p {
 .dice {
     display: inline-block;
 }
+
+.bb {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    margin-left: 20%;
+    width: 60%;
+    height: 80px;
+    border: 1px dotted darkgrey;
+}
+
+p{
+    margin: 10px;
+
+    text-align: center;
+    font-size: 40px;
+    font-weight: bold
+
+}
