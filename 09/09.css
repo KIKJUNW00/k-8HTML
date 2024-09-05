@@ -1,0 +1,40 @@
+.sec {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 100%;
+    background-color: aliceblue;
+}
+
+.sec > input {
+    width: 40%;
+    height: 40px;
+    margin: 20px;
+}
+
+#txt1{
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+}
+
+#txt2{
+    background-color: antiquewhite;
+
+    font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.sec > button{
+    width: 30%;
+    height: 40px;
+    margin: 10px;
+    
+    font-size: 20px;
+    font-weight: bold;
+
+    border-radius: 5px;
+    border-color: aliceblue;
+}

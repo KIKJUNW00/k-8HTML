@@ -1,0 +1,49 @@
+.sec, .row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .sec {
+    margin: 2px; 
+    width: 100%;
+    flex-direction: column;
+  }
+  .row {
+    width: 80%;
+    
+    flex-direction: row;
+  }
+  
+  #txt1 {
+    width: 400px;
+    height: 40px;
+  }
+  
+  #bt1 {
+    width: 100px;
+    height: 40px;
+    background-color: bisque;
+    color: black;
+
+  }
+/*   
+  .col1 {
+    width: 50%;
+    display: flex; 
+    align-items: center;
+    padding: 10px;
+  } */
+  
+  .col1 {
+    justify-content: end;
+  }
+  
+  .col2 {
+    justify-content: start;
+  }
+  
+  input {
+    width: 40%;
+  }
+   
