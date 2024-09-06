@@ -1,0 +1,63 @@
+.sec {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    margin-bottom: 10px;
+}
+
+button {
+    width: 50%;
+    height: 50px;
+    text-align: center;
+    font-size: xx-large;
+}
+
+.div1{
+    background-color: lightgray;
+    padding: 10px;
+    border-radius: 10px;
+    margin: 0px 5px;
+}
+
+
+span {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: large;
+    font-weight: bold;
+}
+
+.divPlus {
+    color:  black;
+    font-size: x-large;
+    font-weight: bold;
+}
+
+.sp0 { 
+    background-color: salmon;
+}
+
+.sp1{
+    background-color: lightgoldenrodyellow;
+}
+
+.sp2{
+    background-color: lightblue;
+}
+
+.sp3{
+    background-color: lightgreen;
+}
+
+.sp4{
+    background-color: lightpink;
+}
