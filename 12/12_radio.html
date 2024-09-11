@@ -9,7 +9,7 @@
     <title>JS기초</title>
 
     <!-- 외부 스크립트 -->
-    <script src='./12.js'></script>
+    <script src='./12_radio.js'></script>
 </head>
 
 <body>
@@ -25,19 +25,24 @@
             <section class='sec'>
                 <div class="divDt">
                     <input type="date" id="dt" name="dt">
-                    <select name="kategory" id="repNationCd">
+                    <fieldset id="repNationCd">
+                        <label><input type="radio" id="r1" value="T" name="mvName"> 전체</label>
+                        <label><input type="radio" id="r2" value="K" name="mvName"> 한국</label>
+                        <label><input type="radio" id="r3" value="F" name="mvName"> 해외</label>
+                    </fieldset>
+                    <!-- <select name="kategory" id="repNationCd">
                         <option value="T" selected>전체</option>
                         <option value="K">한국</option>
                         <option value="F">외국</option>
-                    </select>
+                    </select> -->
                 </div>
             </section>
             <section class="sec">
                 <ul>
-                   
+
                 </ul>
             </section>
-          </main>
+        </main>
     </form>
 </body>
 

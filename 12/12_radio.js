@@ -63,7 +63,15 @@ document.addEventListener('DOMContentLoaded', () => {
     // DOM요소 가져오기
     const dt = document.querySelector('#dt');
     const ul = document.querySelector('.sec > ul');
-    const sel1 = document.querySelector('#repNationCd');
+    // const sel1 = document.querySelector('#repNationCd');
+
+    const sel2 = document.querySelectorAll("input[type ='radio']");
+    for (let i = 0; i < sel2.length; i++) {
+        if (sel2[i].value ==='T') {
+            sel2[i].checked = true;
+        }
+        
+    }
 
 
     //어제 날짜 구하기
@@ -77,19 +85,23 @@ document.addEventListener('DOMContentLoaded', () => {
     dt.value = yesterday;
 
      //기본 첫 페이지 보이기
-  getData(dt.value.replaceAll('-',''), ul, sel1.value);
+//   getData(dt.value.replaceAll('-',''), ul, sel2.value);
+    let nationCode = document.querySelector("[type ='radio']:checked").value;
+    getData(dt.value.replaceAll('-',''), ul, nationCode);
 
     //데이터 가져오기
     dt.addEventListener('change', (e) => {
         e.preventDefault();
-        const nationCode = sel1.value;
+        // const nationCode = sel1.value;
+        nationCode = document.querySelector("[type='radio']:checked").value;
         getData(dt.value.replaceAll('-',''), ul, nationCode);
     });
 
     // repNation 데이터 가져오기
     repNationCd.addEventListener('change', (e) => {
         e.preventDefault();
-        const nationCode = sel1.value;
+        // const nationCode = sel2.value;
+        nationCode = document.querySelector("[type='radio']:checked").value;
         getData(dt.value.replaceAll('-', ''), ul, nationCode);
     });
 
