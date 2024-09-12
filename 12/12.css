@@ -1,11 +1,29 @@
-#boxofficeMain {
+#boxofficeMain, #mvfooter{
     display: flex;
 
     flex-direction: column;
+
+}
+
+#boxofficeMain {
+    height: 500px;
+
     justify-content: start;
     align-items: center;
+}
 
-    height: 500px;
+#mvfooter {
+    height: 80px;
+    width: 60%;
+    margin-left: 20%;
+
+    background-color: cornflowerblue;
+    color: black;
+    font-size: small;
+    padding: 20px;
+    
+    justify-content: left;
+    justify-content: center;
 }
 
 .sec,

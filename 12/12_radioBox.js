@@ -1,9 +1,47 @@
+//전역변수
+const testAPI = '82ca741a2844c5c180a208137bb92bd7';
+
+//상세정보 가져오기
+const getDetail = (movieCd) => {
+    // alert("movieCd :" + movieCd);
+    const mvinfo = document.querySelector('#mvinfo');
+
+    let url = `http://www.kobis.or.kr/kobisopenapi/webservice/rest/movie/searchMovieInfo.json?`;
+    url = `${url}key=${testAPI}&movieCd=${movieCd}`;
+
+    console.log(url);
+    fetch(url)
+        .then(resp => resp.json())
+        .then(data => {
+            let movieInfo = data.movieInfoResult.movieInfo;
+            console.log(movieInfo);
+
+            let genres = movieInfo.genres.map(item => item.genreNm).join(', ');
+            let companys = movieInfo.companys.map(item => `${item.companyNm}(${item.companyPartNm})`).join(', ');
+            let actors = movieInfo.actors.slice(0, 3).map(item => item.peopleNm).join(',');
+
+            console.log(genres, companys);
+            console.log(actors);
+
+            mvinfo.innerHTML = `
+        <div>┍${movieInfo.movieNm} (${movieInfo.openDt})┓</div>
+        <ul>
+          <li>장르 : ${genres}</li>
+          <li>출연진 : ${actors}</li>
+        </ul>
+      ` ;
+
+        })
+        .catch(error => console.log(error));
+
+    // mvinfo.innerHTML = movieCd;
+}
 //OPEN API 데이터 가져오기
 const getData = (selDt, ul, nationCode) => {
     console.log(selDt);
-    const testAPI = '82ca741a2844c5c180a208137bb92bd7';
     let url = `http://kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json?`;
     url = `${url}key=${testAPI}&targetDt=${selDt}`;
+
 
     if (nationCode !== 'T') {
         url = `${url}&repNationCd=${nationCode}`;
@@ -14,29 +52,32 @@ const getData = (selDt, ul, nationCode) => {
         .then(data => {
             let dailyBoxOfficeList = data.boxOfficeResult.dailyBoxOfficeList;
 
-            let tm = dailyBoxOfficeList.map(item => 
-                `<li class='mvli'>
+            let tm = dailyBoxOfficeList.map(item =>
+                `<a href="#" onClick="getDetail(${item.movieCd})">
+                <li class='mvli'>
                     <span class='rank'>${item.rank}</span>
                     <sapn class='movieNm'>${item.movieNm}</sapn>
                     <span class='openDt'>${item.openDt}</span>
                     <span class='rankInten'>
                     ${item.rankInten > 0 ?
-                        '<span class="spRed"> ▲ <span>': item.rankInten < 0 ? 
-                                        '<span class="spBlue"> ▼ <span>' : '-' }
-                    ${item.rankInten != 0 ? Math.abs(item.rankInten): '' }
+                    '<span class="spRed"> ▲ <span>' : item.rankInten < 0 ?
+                        '<span class="spBlue"> ▼ <span>' : '-'}
+                    ${item.rankInten != 0 ? Math.abs(item.rankInten) : ''}
                     </span>
-                  </li>`)
-        
-              tm = tm.join('')
-              ul.innerHTML = tm ;
+                  </li>
+                  </a>`)
 
-              console.log(tm)
+            tm = tm.join('')
+            ul.innerHTML = tm;
+
+            console.log(tm)
 
         })
         .catch(err => console.log(err));
 
     console.log(url);
 }
+
 
 //어제 날짜 구하기 함수
 const getYesterday = () => {
@@ -67,11 +108,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const sel2 = document.querySelectorAll("input[type ='radio']");
     for (let i = 0; i < sel2.length; i++) {
-        if (sel2[i].value ==='T') {
+        if (sel2[i].value === 'T') {
             sel2[i].checked = true;
         }
-        
     }
+
+    const mvinfo = document.querySelector('footer >.sec >.mvinfo');
 
 
     //어제 날짜 구하기
@@ -84,17 +126,17 @@ document.addEventListener('DOMContentLoaded', () => {
     // date의 기본값
     dt.value = yesterday;
 
-     //기본 첫 페이지 보이기
-//   getData(dt.value.replaceAll('-',''), ul, sel2.value);
+    //기본 첫 페이지 보이기
+    //   getData(dt.value.replaceAll('-',''), ul, sel2.value);
     let nationCode = document.querySelector("[type ='radio']:checked").value;
-    getData(dt.value.replaceAll('-',''), ul, nationCode);
+    getData(dt.value.replaceAll('-', ''), ul, nationCode);
 
     //데이터 가져오기
     dt.addEventListener('change', (e) => {
         e.preventDefault();
         // const nationCode = sel1.value;
         nationCode = document.querySelector("[type='radio']:checked").value;
-        getData(dt.value.replaceAll('-',''), ul, nationCode);
+        getData(dt.value.replaceAll('-', ''), ul, nationCode);
     });
 
     // repNation 데이터 가져오기
